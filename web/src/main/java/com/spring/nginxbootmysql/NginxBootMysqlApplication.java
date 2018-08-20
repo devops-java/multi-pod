@@ -38,7 +38,10 @@ public class NginxBootMysqlApplication {
         dataSourceBuilder.password(password);
         dataSourceBuilder.driverClassName(driverClass);
         template.setDataSource(dataSourceBuilder.build()); 
-        getUsers();
+         System.out.println("\n\n\n\n\n RETRV \n\n\n\n");
+        getUsers().forEach( e->{
+        	System.out.println(e.getEmail());
+        });;
 	}
 
 	public static void main(String[] args) {
