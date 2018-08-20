@@ -30,11 +30,22 @@ public class User {
 		this.password = password;
 	}
 
+	
 	public User(Integer userId, String email, String password) {
 		super();
 		this.userId = userId;
 		this.email = email;
 		this.password = password;
+		char ch='a';
+		short s=10;
+		int x=20;
+		long l=30l;
+		float f1=20.3f;
+		double d1= 23.40d;
+		boolean flag1=true;
+		boolean flag2=false;
+		byte b1=12;
+		
 	}
 
 	public User() {
