@@ -1,5 +1,8 @@
 package com.spring.nginxbootmysql;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -10,6 +13,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -30,7 +34,7 @@ public class NginxBootMysqlApplication {
 	private String driverClass;
 	
 	@PostConstruct
-	public void init()
+	public void init() throws SQLException
 	{
 		DataSourceBuilder dataSourceBuilder = DataSourceBuilder.create();
         dataSourceBuilder.url(url);
@@ -38,7 +42,16 @@ public class NginxBootMysqlApplication {
         dataSourceBuilder.password(password);
         dataSourceBuilder.driverClassName(driverClass);
         template.setDataSource(dataSourceBuilder.build()); 
-         System.out.println("\n\n\n\n\n RETRV \n\n\n\n");
+        
+        
+        
+        System.out.println("\n\n\n\n\n RETRV1 \n\n\n\n");
+        Connection con=DriverManager.getConnection(url, userName, password);
+        System.out.println(con);
+        System.out.println("\n\n\n\n\n RETRV2 \n\n\n\n");
+        
+        DriverManagerDataSource ds=new DriverManagerDataSource(url, userName, password);
+        template.setDataSource(ds);
         getUsers().forEach( e->{
         	System.out.println(e.getEmail());
         });;
