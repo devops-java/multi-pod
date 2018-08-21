@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: boot
+spec:
+  selector:
+    matchLabels:
+      run: boot
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        run: boot
+    spec:
+      containers:
+      - name: boot
+        image: rkpatra/nbm:1.5
+        ports:
+        - containerPort: 8080
