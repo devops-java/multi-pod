@@ -5,7 +5,7 @@ CREATE USER 'monty'@'%' IDENTIFIED BY 'some_pass';
 GRANT ALL PRIVILEGES ON *.* TO 'monty'@'%' WITH GRANT OPTION;
 
 CREATE USER 'root'@'%' IDENTIFIED BY 'password1';
-GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' WITH GRANT OPTION;
+GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' identified by 'password1';
 
 CREATE USER 'admin'@'localhost';
 GRANT RELOAD,PROCESS ON *.* TO 'admin'@'localhost';
