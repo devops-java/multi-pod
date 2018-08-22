@@ -12,7 +12,7 @@ GRANT RELOAD,PROCESS ON *.* TO 'admin'@'localhost';
 CREATE USER 'dummy'@'localhost';
 FLUSH PRIVILEGES;
 
-SELECT HOST,USER FROM MYSQL.USER;
+select User,Host from mysql.user;
 
 CREATE DATABASE IF NOT EXISTS MYDB;
 
